@@ -7,6 +7,12 @@ import Button from '@mui/material/Button';
 import Radio from '@mui/material/Radio';
 import {DataGrid} from '@mui/x-data-grid';
 import {SEMESTER_LIST} from '../constants.js'
+import Cookies from 'js-cookie'
+import {toast, ToastContainter} from 'react-toastify';
+import {SERVER_URL} from '../constants.js';
+import Grid from '@mui/material/Grid';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Student from './Student.js';
 
 // user selects from a list of  (year, semester) values
 class Semester extends Component {
@@ -20,6 +26,7 @@ class Semester extends Component {
     this.setState({selected: event.target.value});
   }
   
+
   render() {    
       const icolumns = [
       {
@@ -62,9 +69,17 @@ class Semester extends Component {
                 variant="outlined" color="primary" style={{margin: 10}}>
                 Get Schedule
               </Button>
+
           </div>
-      </div>
-    )
+	  <Grid container>
+	    <Grid Item>
+	      	<ButtonGroup> 
+                	      <Student addStudent= {this.addStudent}/>
+	      	</ButtonGroup>
+
+	    </Grid>			 
+	  </Grid>
+          </div>)
   }
 }
 export default Semester;
